@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-page text-body font-sans text-sm; font-feature-settings: 'cv11', 'ss01'; }
+  h1, h2, h3, h4 { @apply text-ink; }
+  .tnum { font-variant-numeric: tabular-nums; }
+  :focus-visible { outline: 2px solid #4F46E5; outline-offset: 2px; border-radius: 6px; }
+}
+
+@layer components {
+  .card { @apply bg-white rounded-card border border-line; }
+  .card-pad { @apply p-6; }
+  .label { @apply text-xs font-medium text-muted; }
+  .th { @apply text-[11px] font-medium uppercase tracking-[0.04em] text-muted text-left px-4 py-3; }
+  .td { @apply px-4 py-3.5 align-middle; }
+  .input { @apply w-full h-10 rounded-lg border border-line bg-white px-3 text-sm text-ink placeholder:text-muted outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20; }
+  .link { @apply text-primary hover:text-primary-hover font-medium; }
+}
+
+.mesh-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.mirror { transform: scaleX(-1); }
+
+@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(79,70,229,.35) } 100% { box-shadow: 0 0 0 10px rgba(79,70,229,0) } }
+.pulse { animation: pulse-ring 1.6s ease-out infinite; }

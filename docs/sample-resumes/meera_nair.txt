@@ -1,0 +1,21 @@
+Meera Nair
+meera.nair@demo.securehire.dev | +91 94470 12345
+
+Professional Summary
+Associate consultant building analytics platforms for retail clients.
+
+Work Experience
+Associate Consultant at TCS
+Aug 2022 - Present
+Built data pipelines with Python and Azure Data Factory.
+
+Education
+MCA (Master of Computer Applications)
+Cochin University of Science and Technology
+2020 - 2022
+
+Skills
+Python, SQL, Azure, Power BI, Excel
+
+Certifications
+Microsoft Certified: Azure Data Fundamentals

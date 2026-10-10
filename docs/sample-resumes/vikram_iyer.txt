@@ -1,0 +1,18 @@
+Vikram Iyer
+vikram.iyer@demo.securehire.dev | +91 98400 22334
+
+Summary
+Frontend developer with a focus on accessibility.
+
+Experience
+Frontend Developer at Freelance (part-time)
+Jan 2020 - Dec 2022
+Built React websites for small businesses.
+
+Education
+B.Sc Computer Science
+Loyola College
+2016 - 2019
+
+Skills
+React, TypeScript, CSS, Figma, Accessibility

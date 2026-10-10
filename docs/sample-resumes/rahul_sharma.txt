@@ -1,0 +1,21 @@
+Rahul Sharma
+rahul.sharma@demo.securehire.dev | +91 91234 56780
+
+Summary
+Backend engineer focused on payments and distributed systems.
+
+Experience
+Senior Backend Engineer at Razorpay
+Mar 2021 - Present
+Designed idempotent payment APIs in Go and PostgreSQL.
+Systems Engineer | Infosys
+Aug 2019 - Dec 2021
+Maintained Java microservices for a banking client.
+
+Education
+B.E. in Information Technology
+Pune Institute of Computer Technology
+2015 - 2019
+
+Skills
+Go, Java, PostgreSQL, Kafka, Docker, Kubernetes, AWS

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SecureHire Assessment Monitor</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <img src="icons/icon32.png" alt="" width="24" height="24" />
+    <div><h1>SecureHire</h1><p>Assessment Monitor <span id="version"></span></p></div>
+    <span id="status" class="pill idle">Idle</span>
+  </header>
+
+  <section class="card">
+    <div class="row"><span class="label">Session</span><span id="session" class="mono">—</span></div>
+    <div class="row"><span class="label">Started</span><span id="started">—</span></div>
+    <div class="row"><span class="label">Backend</span><span id="backend">—</span></div>
+    <div class="row"><span class="label">Queued events</span><span id="queued">0</span></div>
+  </section>
+
+  <section class="grid">
+    <div class="stat"><span class="label">Tab changes</span><strong id="c-tab">0</strong></div>
+    <div class="stat"><span class="label">Focus lost</span><strong id="c-focus">0</strong></div>
+    <div class="stat"><span class="label">Fullscreen exits</span><strong id="c-fs">0</strong></div>
+    <div class="stat"><span class="label">Copy / paste</span><strong id="c-clip">0</strong></div>
+  </section>
+
+  <section class="actions">
+    <button id="retry" class="secondary">Retry sync</button>
+    <button id="test" class="secondary">Local test session</button>
+    <button id="stop" class="danger" hidden>Stop monitoring</button>
+  </section>
+
+  <footer>
+    <p>Monitoring runs only after you consent on a SecureHire assessment page. Clipboard contents, keystrokes and other tabs' URLs are never collected.</p>
+    <p class="muted">Allowlist: <span id="allowlist"></span></p>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>

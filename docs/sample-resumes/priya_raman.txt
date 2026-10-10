@@ -1,0 +1,24 @@
+Priya Raman
+priya.raman@demo.securehire.dev | +91 90000 11111 | github.com/priya-raman-demo | linkedin.com/in/priya-raman-demo
+
+Professional Summary
+Full-stack engineer with 4 years of experience building SaaS products.
+
+Work Experience
+Senior Software Engineer at Freshworks
+Jun 2024 - Present
+Led the migration of billing services to Node.js microservices.
+Software Engineer at Zoho Corporation
+Jul 2022 - May 2024
+Built React components for Zoho Desk.
+
+Education
+B.Tech, Computer Science and Engineering
+College of Engineering Guindy, Anna University
+2018 - 2022
+
+Skills
+JavaScript, TypeScript, React, Node.js, PostgreSQL, Docker, AWS
+
+Certifications
+AWS Certified Developer – Associate

@@ -1,0 +1,28 @@
+Arjun Kumar
+arjun.kumar@demo.securehire.dev | +91 98765 43210 | github.com/arjun-kumar-demo
+
+Summary
+Data analyst passionate about machine learning and dashboards.
+
+Education
+B.Tech in AI & DS
+PSG College of Technology
+2020 - 2024 | CGPA 8.2
+
+Experience
+Data Analyst at Infosys
+Jan 2023 - Present
+Built Power BI dashboards and Python ETL jobs.
+Machine Learning Engineer | Fractal Analytics
+Jun 2023 - Mar 2024
+Trained churn models using scikit-learn.
+
+Skills
+Python, SQL, Power BI, Pandas, scikit-learn, Tableau
+
+Projects
+Retail demand forecasting with LSTM
+Resume screening assistant
+
+Certifications
+Google Data Analytics Professional Certificate

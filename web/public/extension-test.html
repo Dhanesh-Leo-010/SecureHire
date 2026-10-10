@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SecureHire extension test page</title>
+<style>
+  body { font: 14px/1.5 Inter, system-ui, sans-serif; color: #0F172A; background: #F8FAFC; margin: 0; padding: 32px; }
+  main { max-width: 760px; margin: 0 auto; }
+  .card { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px 24px; margin-top: 16px; }
+  button { height: 36px; padding: 0 14px; border-radius: 8px; border: 1px solid #E2E8F0; background: #fff; cursor: pointer; font: inherit; margin: 4px 6px 4px 0; }
+  button.primary { background: #4F46E5; color: #fff; border-color: #4F46E5; }
+  pre { background: #0F172A; color: #E2E8F0; padding: 14px; border-radius: 8px; overflow: auto; font-size: 12px; max-height: 320px; }
+  .muted { color: #64748B; font-size: 12px; }
+  textarea { width: 100%; height: 70px; border: 1px solid #E2E8F0; border-radius: 8px; padding: 8px; font: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <h1>SecureHire extension test page</h1>
+  <p class="muted">DEMO ONLY. Exercises the real flow end to end: ping the extension → create a server session (as the synthetic demo candidate Arjun) → START_SESSION → trigger events → read counts from the extension and the server → END_SESSION. Open the recruiter's <b>Live monitoring</b> page in another window to watch events arrive.</p>
+
+  <div class="card">
+    <button class="primary" id="ping">1. Ping extension</button>
+    <button class="primary" id="start">2. Consent &amp; start session</button>
+    <button id="status">3. Status</button>
+    <button id="end">4. End session</button>
+  </div>
+  <div class="card">
+    <p><b>Try these while a session is active:</b> switch tabs, click outside the window, press F11/Esc for fullscreen, copy this text, paste into the box, right-click.</p>
+    <p id="copyme">Copy me — only the attempt is recorded, never the text.</p>
+    <textarea placeholder="Paste here"></textarea>
+    <button id="fs">Enter fullscreen</button>
+  </div>
+  <pre id="log">Ready.</pre>
+</main>
+<script>
+  const EXT_ID = 'mlfnbgkkkndpcbmleppgablahalkeedn';
+  const log = (x) => { document.getElementById('log').textContent = (typeof x === 'string' ? x : JSON.stringify(x, null, 2)) + '\n\n' + document.getElementById('log').textContent; };
+  const ext = (msg) => new Promise((res) => {
+    if (!window.chrome?.runtime?.sendMessage) return res({ ok: false, error: 'Extension not reachable (not installed, or this origin is not allowlisted).' });
+    chrome.runtime.sendMessage(EXT_ID, msg, (r) => res(chrome.runtime.lastError ? { ok: false, error: chrome.runtime.lastError.message } : r));
+  });
+  let session = null;
+  document.getElementById('ping').onclick = async () => log({ PING: await ext({ type: 'PING' }) });
+  document.getElementById('start').onclick = async () => {
+    if (!confirm('Consent: monitor tab visibility, focus, fullscreen and copy/paste ATTEMPTS on this page for this test session?')) return;
+    const login = await fetch('/api/auth/login', { method: 'POST', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: 'arjun@demo.securehire.dev', password: 'Demo@1234' }) });
+    if (!login.ok) return log('Demo login failed — is DEMO data seeded?');
+    const r = await fetch('/api/assessment/sessions', { method: 'POST', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ assessmentId: 1, consent: true, extensionVersion: 'test-page' }) });
+    const s = await r.json();
+    if (!r.ok) return log(s);
+    session = s;
+    log({ server: { sessionId: s.sessionId }, START_SESSION: await ext({ type: 'START_SESSION', sessionId: s.sessionId, sessionToken: s.sessionToken, apiBaseUrl: location.origin, candidateId: 0, consentGiven: true }) });
+  };
+  document.getElementById('status').onclick = async () => {
+    const e = await ext({ type: 'GET_STATUS' });
+    const sv = session ? await (await fetch(`/api/assessment/sessions/${session.sessionId}/status`, { headers: { Authorization: `Bearer ${session.sessionToken}` } })).json() : null;
+    log({ extension: e, server: sv });
+  };
+  document.getElementById('end').onclick = async () => log({ END_SESSION: await ext({ type: 'END_SESSION' }) });
+  document.getElementById('fs').onclick = () => document.documentElement.requestFullscreen();
+</script>
+</body>
+</html>
