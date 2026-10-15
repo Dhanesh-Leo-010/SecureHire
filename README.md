@@ -1,6 +1,6 @@
 # SecureHire — Candidate Trust & Fraud Intelligence Platform
 
-KERNEL PRIME'26 · SW-03. A continuous trust layer across seven hiring stages — **Apply → Identity → Resume → Assessment → Interview → Offer → Onboarding** — with an explainable trust indicator, human review for every risk flag, and a companion Chrome extension.
+ A continuous trust layer across seven hiring stages — **Apply → Identity → Resume → Assessment → Interview → Offer → Onboarding** — with an explainable trust indicator, human review for every risk flag, and a companion Chrome extension.
 
 > Prototype. Aadhaar, DigiLocker, APAAR and employer confirmations are **simulated providers with synthetic data**, clearly labelled `MOCK` in the UI. Scores are illustrative review indicators, not validated fraud probabilities. Nothing in the system rejects a candidate automatically.
 
